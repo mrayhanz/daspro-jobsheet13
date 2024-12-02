@@ -17,9 +17,9 @@ public class index {
             if (pilihan == 1) {
                 tambahPrestasi();
             }else if (pilihan == 2) {
-
+                tampilkanPrestasi();
             }else if (pilihan == 3) {
-                System.out.println("=== ANALISIS PRESTASI ===");
+                
             }else if (pilihan == 4) {
                 System.out.println("Program Selesai. Terimakasih!");
                 break;
@@ -51,10 +51,12 @@ public class index {
                         dataPrestasi[i][2] = jenis;
                         dataPrestasi[i][3] = tingkat;
                         dataPrestasi[i][4] = Integer.toString(tahun);
+                        jumlahPrestasi++;
                         System.out.println("Data Prestasi Berhasil ditambahkan.");
                         break;
                     }
                 }
+                System.out.println();
                 break;            
             }
         } while (true);
@@ -74,5 +76,6 @@ public class index {
                             " | Tahun: " + dataPrestasi[i][4]);
             }
         }
+        System.out.println();
     }
 }
