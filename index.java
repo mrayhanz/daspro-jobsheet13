@@ -38,23 +38,41 @@ public class index {
         String jenis = sc.nextLine();
         System.out.print("Masukkan Tingkat Prestasi (Lokal/Nasional/Internasional): ");
         String tingkat = sc.nextLine();
-        System.out.println("Masukkan Tahun Prestasi: ");
-        int tahun = sc.nextInt();
-        if (tahun < 2010 || tahun > 2024) {
-            System.out.println("Tahun tidak valid coba lagi.");
-            return;
-        }
-        for (int i = 1; i < dataPrestasi.length; i++) {
-            if (dataPrestasi[i][0] == null) {
-                dataPrestasi[i][0] = nama;
-                dataPrestasi[i][1] = nim;
-                dataPrestasi[i][2] = jenis;
-                dataPrestasi[i][3] = tingkat;
-                dataPrestasi[i][4] = Integer.toString(tahun);
-                System.out.println("Data Prestasi Berhasil ditambahkan.");
-                break;
+        do {
+            System.out.print("Masukkan Tahun Prestasi: ");
+            int tahun = sc.nextInt();
+            if (tahun < 2010 || tahun > 2024) {
+                System.out.println("Tahun tidak valid coba lagi.");
+            }else {
+                for (int i = 0; i < dataPrestasi.length; i++) {
+                    if (dataPrestasi[i][0] == null) {
+                        dataPrestasi[i][0] = nama;
+                        dataPrestasi[i][1] = nim;
+                        dataPrestasi[i][2] = jenis;
+                        dataPrestasi[i][3] = tingkat;
+                        dataPrestasi[i][4] = Integer.toString(tahun);
+                        System.out.println("Data Prestasi Berhasil ditambahkan.");
+                        break;
+                    }
+                }
+                break;            
+            }
+        } while (true);
+    }
+    static void tampilkanPrestasi() {
+        if (jumlahPrestasi == 0) {
+
+        System.out.println("Belum ada data prestasi.");
+        } else {
+
+        for (int i = 0; i < jumlahPrestasi; i++) {
+
+            System.out.println("Nama: " + dataPrestasi[i][0] + 
+                            " | NIM: " + dataPrestasi[i][1] + 
+                            " | Jenis: " + dataPrestasi[i][2] +  
+                            " | Tingkat: " + dataPrestasi[i][3] + 
+                            " | Tahun: " + dataPrestasi[i][4]);
             }
         }
-        System.out.println("Data Prestasi Berhasil ditambahkan.");
     }
 }
