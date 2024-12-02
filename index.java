@@ -54,21 +54,19 @@ public class index {
             }
         }
     }
-        // Fungsi untuk menampilkan semua prestasi yang telah dimasukkan
-    static void tampilkanPrestasi(){
+    static void tampilkanPrestasi() {
         if (jumlahPrestasi == 0) {
-        // Jika tidak ada data prestasi
+
         System.out.println("Belum ada data prestasi.");
         } else {
-        // Jika ada data prestasi, lakukan iterasi
+
         for (int i = 0; i < jumlahPrestasi; i++) {
-            // Menampilkan setiap data prestasi
-            System.out.printf("Nama: %s | NIM: %s | Jenis: %s | Tingkat: %s | Tahun: %s%n",
-                              dataPrestasi[i][0],  // Nama
-                              dataPrestasi[i][1],  // NIM
-                              dataPrestasi[i][2],  // Jenis Prestasi
-                              dataPrestasi[i][3],  // Tingkat Prestasi
-                              dataPrestasi[i][4]); // Tahun
+
+            System.out.println("Nama: " + dataPrestasi[i][0] + 
+                            " | NIM: " + dataPrestasi[i][1] + 
+                            " | Jenis: " + dataPrestasi[i][2] +  
+                            " | Tingkat: " + dataPrestasi[i][3] + 
+                            " | Tahun: " + dataPrestasi[i][4]);
             }
         }
     }
