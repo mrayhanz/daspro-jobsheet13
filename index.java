@@ -31,15 +31,27 @@ public class index {
         String nama = sc.nextLine();
         System.out.println("Masukkan NIM Mahasiswa: ");
         String nim = sc.nextLine();
-        System.out.println("Masukkan Jenis Prestasi (Lokal/Nasional/Internasional): ");
+        System.out.println("Masukkan Jenis Prestasi: ");
         String jenis = sc.nextLine();
+        System.out.println("Masukkan Tingkat Prestasi (Lokal/Nasional/Internasional): ");
+        String tingkat = sc.nextLine();
         System.out.println("Masukkan Tahun Prestasi: ");
         int tahun = sc.nextInt();
         if (tahun < 2010 || tahun > 2024) {
             System.out.println("Tahun tidak valid coba lagi.");
             return;
         }
-
+        for (int i = 1; i < dataPrestasi.length; i++) {
+            if (dataPrestasi[i][0] == null) {
+                dataPrestasi[i][0] = nama;
+                dataPrestasi[i][1] = nim;
+                dataPrestasi[i][2] = jenis;
+                dataPrestasi[i][3] = tingkat;
+                dataPrestasi[i][4] = Integer.toString(tahun);
+                System.out.println("Data Prestasi Berhasil ditambahkan.");
+                break;
+            }
+        }
         System.out.println("Data Prestasi Berhasil ditambahkan.");
     }
 }
