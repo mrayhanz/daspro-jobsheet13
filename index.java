@@ -69,9 +69,8 @@ public class index {
                               dataPrestasi[i][2],  // Jenis Prestasi
                               dataPrestasi[i][3],  // Tingkat Prestasi
                               dataPrestasi[i][4]); // Tahun
+            }
         }
     }
-}
-
     
 }
