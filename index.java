@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class index {
     static String dataPrestasi[][] = new String[100][5];
+    static int jumlahPrestasi = 0;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int pilihan;
@@ -37,25 +38,23 @@ public class index {
         String jenis = sc.nextLine();
         System.out.print("Masukkan Tingkat Prestasi (Lokal/Nasional/Internasional): ");
         String tingkat = sc.nextLine();
-        do {
-            System.out.print("Masukkan Tahun Prestasi: ");
-            int tahun = sc.nextInt();
-            if (tahun < 2010 || tahun > 2024) {
-                System.out.println("Tahun tidak valid coba lagi.");
-            }else {
-                for (int i = 0; i < dataPrestasi.length; i++) {
-                    if (dataPrestasi[i][0] == null) {
-                        dataPrestasi[i][0] = nama;
-                        dataPrestasi[i][1] = nim;
-                        dataPrestasi[i][2] = jenis;
-                        dataPrestasi[i][3] = tingkat;
-                        dataPrestasi[i][4] = Integer.toString(tahun);
-                        System.out.println("Data Prestasi Berhasil ditambahkan.");
-                        break;
-                    }
-                }
-                break;            
+        System.out.println("Masukkan Tahun Prestasi: ");
+        int tahun = sc.nextInt();
+        if (tahun < 2010 || tahun > 2024) {
+            System.out.println("Tahun tidak valid coba lagi.");
+            return;
+        }
+        for (int i = 1; i < dataPrestasi.length; i++) {
+            if (dataPrestasi[i][0] == null) {
+                dataPrestasi[i][0] = nama;
+                dataPrestasi[i][1] = nim;
+                dataPrestasi[i][2] = jenis;
+                dataPrestasi[i][3] = tingkat;
+                dataPrestasi[i][4] = Integer.toString(tahun);
+                System.out.println("Data Prestasi Berhasil ditambahkan.");
+                break;
             }
-        } while (true);
+        }
+        System.out.println("Data Prestasi Berhasil ditambahkan.");
     }
 }
