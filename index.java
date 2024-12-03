@@ -49,7 +49,7 @@ public class index {
                 break;
             } else {
                 System.out.println("Tingkat prestasi tidak valid coba lagi.");
-            }
+            }   
         }
 
         while (true) {
@@ -60,7 +60,7 @@ public class index {
                 continue;
             }
             
-            for (int i = 0; i < dataPrestasi.length; i++) {
+            for (int i = 0; i < jumlahPrestasi; i++) {
                 if (dataPrestasi[i][0] == null) {
                     dataPrestasi[i][0] = nama;
                     dataPrestasi[i][1] = nim;
@@ -104,6 +104,10 @@ public class index {
         
         System.out.println();
         System.out.println("=== ANALISIS PRESTASI ===");
+
+        if (!prestasi) {
+            System.out.println("Tidak ada prestasi ditemukan untuk jenis " + jenisPrestasi + (tahun != 0 ? " di tahun " + tahun : ""));
+        }
         for (int i = 0; i < jumlahPrestasi; i++) {
             if (dataPrestasi[i][2].equalsIgnoreCase(jenisPrestasi)) {
                 if (tahun == 0 || Integer.parseInt(dataPrestasi[i][4]) == tahun) {
@@ -112,10 +116,7 @@ public class index {
                 }
             }
         }
-        
-        if (!prestasi) {
-            System.out.println("Tidak ada prestasi ditemukan untuk jenis " + jenisPrestasi + (tahun != 0 ? " di tahun " + tahun : ""));
-        }
+
         System.out.println();
     }
 }
