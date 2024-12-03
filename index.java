@@ -25,7 +25,7 @@ public class index {
                 analisisPrestasi();
             } else if (pilihan == 4) {
                 System.out.println("Program Selesai. Terimakasih!");
-                return;
+                break;
             } else {
                 System.out.println("Pilihan tidak valid. Coba lagi.");
             }
