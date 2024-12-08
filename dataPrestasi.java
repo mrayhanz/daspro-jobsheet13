@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class index {
+public class dataPrestasi {
     static String dataPrestasi[][] = new String[10][5];
     static int jumlahPrestasi = 0;
     
@@ -15,7 +15,7 @@ public class index {
             System.out.println("4. Keluar");
             System.out.print("Pilih Menu: ");
             pilihan = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine();  
             
             if (pilihan == 1) {
                 tambahPrestasi();
