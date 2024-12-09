@@ -235,9 +235,9 @@ public class matriks {
             for (int i = 0; i < 2; i++) {
                 System.out.print("| ");
                 for (int j = 0; j < 2; j++) {
-                    System.out.printf("%.2f ", invers[i][j]);
+                    System.out.print(pembulatan(invers[i][j]) + " ");
                 }
-                System.out.println("|");
+                System.out.println();
             }
         }
         System.out.println();
