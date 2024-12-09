@@ -38,9 +38,9 @@ public class matriks {
         Scanner sc = new Scanner(System.in);
         int ordo1 , ordo2 , i, j, k;
         while (true) {
-            System.out.println("Masukkan ordo matriks 1: ");
+            System.out.print("Masukkan ordo matriks 1: ");
             ordo1 = sc.nextInt();
-            System.out.println("Masukkan ordo matriks 2: ");
+            System.out.print("Masukkan ordo matriks 2: ");
             ordo2 = sc.nextInt();
             matriks1 = new int[ordo1][ordo1];
             matriks2 = new int[ordo2][ordo2];
@@ -54,14 +54,14 @@ public class matriks {
 
         for (i = 0; i < matriks1.length; i++){
             for (j = 0; j < matriks1[i].length; j++){
-                System.out.println("Masukkan Elemen Matriks pertama" + "[" + i + "]" + "[" + j + "]" + " : " );
+                System.out.print("Masukkan Elemen Matriks pertama" + "[" + i + "]" + "[" + j + "]" + " : " );
                 matriks1[i][j] = sc.nextInt();
             }
         }
 
         for (i = 0; i < matriks1.length; i++){
             for (j = 0; j < matriks1[i].length; j++){
-                System.out.println("Masukkan Elemen Matriks kedua" + "[" + i + "]" + "[" + j + "]" + " : " );
+                System.out.print("Masukkan Elemen Matriks kedua" + "[" + i + "]" + "[" + j + "]" + " : " );
                 matriks2[i][j] = sc.nextInt();
             }
         }
@@ -73,8 +73,13 @@ public class matriks {
                 }
             }
         }
-        System.out.print("Hasil perkalian dari kedua matriks tersebut : " + hasil);
         System.out.println();
+        for (i = 0; i < hasil.length; i++){
+            for (j = 0; j < hasil[i].length;j++){
+                System.out.print(hasil[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     static void transpose(){
@@ -87,18 +92,24 @@ public class matriks {
 
         for (int i = 0; i < matriks1.length; i++){
             for (int j = 0; j < matriks1[i].length; j++){
-                System.out.println("Masukkan Elemen Matriks" + "[" + i + "]" + "[" + j + "]" + " : " );
+                System.out.print("Masukkan Elemen Matriks" + "[" + i + "]" + "[" + j + "]" + " : " );
                 matriks1[i][j] = sc.nextInt();
+            }
+        }
+
+        int [][]transpose = new int[kolom][baris];
+        for (int i = 0; i < matriks1.length; i++) {
+            for (int j = 0; j < matriks1[i].length; j++) {
+                transpose[j][i] = matriks1[i][j];
             }
         }
 
         for (int i = 0; i < matriks1.length; i++){
             for (int j = 0; j < matriks1[i].length; j++){
-                System.out.print(matriks1[j][i] + " ");
-                System.out.println();
+                System.out.print(transpose[j][i] + " ");
             }
+            System.out.println();
         }
-        System.out.println();
     }
 
     static void penguranganMatriks(){
@@ -277,10 +288,10 @@ public class matriks {
         Scanner scanner = new Scanner(System.in);
         double[][] matrix = new double[3][3];
 
-        System.out.println("Masukkan 9 elemen matriks :");
+        System.out.println("Masukkan elemen matriks :");
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                System.out.print("Elemen [" + (i+1) + "][" + (j+1) + "]: ");
+                System.out.print("Elemen [" + i + "][" + j + "]: ");
                 matrix[i][j] = scanner.nextDouble();
             }
         }
