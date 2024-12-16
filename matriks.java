@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class matriks {
     static int[][] matriks1;
     static int[][] matriks2;
+    static int[][] hasil;
+    static int baris, kolom;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -36,21 +38,18 @@ public class matriks {
 
     static void perkalianMatriks(){
         Scanner sc = new Scanner(System.in);
-        int ordo1 , ordo2 , i, j, k;
-        while (true) {
-            System.out.print("Masukkan ordo matriks 1: ");
-            ordo1 = sc.nextInt();
-            System.out.print("Masukkan ordo matriks 2: ");
-            ordo2 = sc.nextInt();
-            matriks1 = new int[ordo1][ordo1];
-            matriks2 = new int[ordo2][ordo2];
-            if (ordo1 == ordo2) {
-                break;
-            }else{
-                System.out.println("Ordo matriks harus sama\n");
-            }
-        }
-        int hasil [][] = new int[ordo1][ordo1];
+        int baris1 , baris2 , kolom1 , kolom2 , i, j, k;
+        System.out.print("Masukkan baris matriks 1: ");
+        baris1 = sc.nextInt();
+        System.out.print("Masukkan kolom matriks 1: ");
+        kolom1 = sc.nextInt();
+        System.out.print("Masukkan baris matriks 2: ");
+        baris2 = sc.nextInt();
+        System.out.print("Masukkan kolom matriks 2: ");
+        kolom2 = sc.nextInt();
+        matriks1 = new int[baris1][kolom1];
+        matriks2 = new int[baris2][kolom2];
+        int hasil [][] = new int[baris1][kolom2];
 
         for (i = 0; i < matriks1.length; i++){
             for (j = 0; j < matriks1[i].length; j++){
@@ -74,12 +73,7 @@ public class matriks {
             }
         }
         System.out.println();
-        for (i = 0; i < hasil.length; i++){
-            for (j = 0; j < hasil[i].length;j++){
-                System.out.print(hasil[i][j] + " ");
-            }
-            System.out.println();
-        }
+        cetakMatriks(hasil,"x");
     }
 
     static void transpose(){
@@ -112,65 +106,53 @@ public class matriks {
         }
     }
 
-    static void penguranganMatriks(){
+    static void input(){
         Scanner sc = new Scanner(System.in);
-        int a, b;
-
         System.out.print("Masukkan jumlah baris matriks: ");
-        a = sc.nextInt();
+        baris = sc.nextInt();
         System.out.print("Masukkan jumlah kolom matriks: ");
-        b = sc.nextInt();
-
-        int[][] barisMatriks = new int[a][b];
-        int[][] kolomMatriks = new int[a][b];
-        int[][] hasilMatriks = new int[a][b];
-
-        System.out.println("Masukkan elemen matriks pertama: ");
-        for (int i = 0; i < a; i++) {
-            for (int j = 0; j < b; j++) {
-                System.out.print("Elemen [" + i + "][" + j + "]: ");
-                barisMatriks[i][j] = sc.nextInt();
+        kolom = sc.nextInt();
+        matriks1 = new int[baris][kolom];
+        matriks2 = new int[baris][kolom];
+        hasil = new int[baris][kolom];
+        for (int i = 0; i < baris; i++){
+            for (int j = 0; j < kolom; j++){
+                System.out.print("Masukkan Elemen Matriks" + "[" + i + "]" + "[" + j + "]" + " : " );
+                matriks1[i][j] = sc.nextInt();
             }
         }
-
-        System.out.println("Masukkan elemen matriks kedua: ");
-        for (int i = 0; i < a; i++) {
-            for (int j = 0; j < b; j++) {
-                System.out.print("Elemen [" + i + "][" + j + "]: ");
-                kolomMatriks[i][j] = sc.nextInt();
+        for (int i = 0; i < baris; i++){
+            for (int j = 0; j < kolom; j++){
+                System.out.print("Masukkan Elemen Matriks" + "[" + i + "]" + "[" + j + "]" + " : " );
+                matriks2[i][j] = sc.nextInt();
             }
         }
+    }
 
-        for (int i = 0; i < a; i++) {
-            for (int j = 0; j < b; j++) {
-                hasilMatriks[i][j] = barisMatriks[i][j] - kolomMatriks[i][j];
-            }
-        }
-
-        System.out.println("Hasil pengurangan matriks : ");        
-        for (int i = 0; i < a; i++) {
+    static void cetakMatriks(int[][] matriks , String operator){
+        for (int i = 0; i < baris; i++) {
             System.out.print("| ");
-            for (int j = 0; j < b; j++) {
-                System.out.print(barisMatriks[i][j] + " ");
+            for (int j = 0; j < kolom; j++) {
+                System.out.print(matriks1[i][j] + " ");
             }
-            System.out.print("|");
+            System.out.print("| ");
 
-            // Menampilkan tanda "-" di tengah
-            if (i == a / 2) {
-                System.out.print(" - ");
+            // Menampilkan tanda operator di tengah
+            if (i == baris / 2) {
+                System.out.print(" " + operator + " ");
             } else {
                 System.out.print("   ");
             }
 
             // Menampilkan Matriks 2
             System.out.print("| ");
-            for (int j = 0; j < b; j++) {
-                System.out.print(kolomMatriks[i][j] + " ");
+            for (int j = 0; j < kolom; j++) {
+                System.out.print(matriks2[i][j] + " ");
             }
             System.out.print("|");
 
             // Menampilkan tanda "=" di tengah
-            if (i == a / 2) {
+            if (i == baris / 2) {
                 System.out.print(" = ");
             } else {
                 System.out.print("   ");
@@ -178,12 +160,37 @@ public class matriks {
 
             // Menampilkan Hasil Matriks
             System.out.print("| ");
-            for (int j = 0; j < b; j++) {
-                System.out.print(hasilMatriks[i][j] + " ");
+            for (int j = 0; j < kolom; j++) {
+                System.out.print(hasil[i][j] + " ");
             }
             System.out.println("|"); 
         }
         System.out.println();
+    }
+    
+    static void penjumlahan(){
+        input();
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                hasil[i][j] = matriks1[i][j] + matriks2[i][j];
+            }
+        }
+
+        System.out.println("Hasil penjumlahan matriks:");
+        cetakMatriks(hasil, "+");
+    }
+
+
+    static void penguranganMatriks(){
+        input();
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                hasil[i][j] = matriks1[i][j] -  matriks2[i][j];
+            }
+        }
+
+        System.out.println("Hasil pengurangan matriks : ");        
+        cetakMatriks(hasil,"-");
     }
 
     static void inverseMatriks(){
@@ -194,7 +201,7 @@ public class matriks {
             System.out.println("1. 2x2");
             System.out.println("2. 3x3");
             System.out.println("3. Kembali Ke Menu Utama");
-            System.out.print("Pilih Ordo Matriks Inverse: ");
+            System.out.print("Pilih Submenu: ");
             pilih = sc.nextInt();
             if (pilih == 1) {
                 inverse2x2();
@@ -233,7 +240,6 @@ public class matriks {
 
             System.out.println("Invers matriks:");
             for (int i = 0; i < 2; i++) {
-                System.out.print("| ");
                 for (int j = 0; j < 2; j++) {
                     System.out.print(pembulatan(invers[i][j]) + " ");
                 }
@@ -241,47 +247,6 @@ public class matriks {
             }
         }
         System.out.println();
-    }
-    static void penjumlahan(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Masukkan jumlah baris matriks: ");
-        int baris = scanner.nextInt();
-        System.out.print("Masukkan jumlah kolom matriks: ");
-        int kolom = scanner.nextInt();
-
-        int[][] matriks1 = new int[baris][kolom];
-        int[][] matriks2 = new int[baris][kolom];
-        int[][] hasil = new int[baris][kolom];
-
-        System.out.println("Masukkan elemen matriks pertama:");
-        for (int i = 0; i < baris; i++) {
-            for (int j = 0; j < kolom; j++) {
-                System.out.print("Elemen [" + i + "][" + j + "]: ");
-                matriks1[i][j] = scanner.nextInt();
-            }
-        }
-
-        System.out.println("Masukkan elemen matriks kedua:");
-        for (int i = 0; i < baris; i++) {
-            for (int j = 0; j < kolom; j++) {
-                System.out.print("Elemen [" + i + "][" + j + "]: ");
-                matriks2[i][j] = scanner.nextInt();
-            }
-        }
-
-        for (int i = 0; i < baris; i++) {
-            for (int j = 0; j < kolom; j++) {
-                hasil[i][j] = matriks1[i][j] + matriks2[i][j];
-            }
-        }
-
-        System.out.println("Hasil penjumlahan matriks:");
-        for (int i = 0; i < baris; i++) {
-            for (int j = 0; j < kolom; j++) {
-                System.out.print("Matriks1[" + i + "][" + j + "] + Matriks2[" + i + "][" + j + "] = " + hasil[i][j] + "\t");
-            }
-            System.out.println();
-        }
     }
 
     static void inverse3x3(){
@@ -317,12 +282,9 @@ public class matriks {
     }
     
     public static double determinan(double[][] matrix) {
-        double hasil = 0;
-        double a = matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1]);
-        double b = matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0]);
-        double c = matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0]);
-        hasil = a-b+c;
-        return hasil;
+        return  matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1]) -
+                matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0]) +
+                matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0]);
     }
     
     public static double[][] hitungInvers(double[][] matrix) {
